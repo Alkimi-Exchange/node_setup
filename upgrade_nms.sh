@@ -7,10 +7,11 @@ echo "SERVICER PID IS $server_pid"
 folder_name="nms"$(date +%Y%m%d%H%M%S)
 mkdir -p backup/"$folder_name"
 cp -rp /home/ubuntu/node_setup/!(backup) backup/"$folder_name"
+git checkout .
 git pull
 wget --backups=1 https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 sudo chmod 755 nms_web_server
-nohup ./nms_web_sever &
+nohup ./nms_web_server &
 echo $! > webserver_pid.txt
 sudo docker-compose up -d
 echo "NMS Upgrade completed Successfully" > backup/nms_upgrade.log
