@@ -10,7 +10,7 @@ git checkout .
 git pull
 wget  https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 chmod 755 nms_web_server
-nohup ./nms_web_server &
 docker-compose up -d
-echo "NMS Upgrade completed Successfully" > /home/ubuntu/node_backup/nms_upgrade.log
 chmod 755 upgrade_nms.sh
+nohup python3 upgrade_nms.py > error_up.log 2>&1 &
+echo "NMS Upgrade completed Successfully" > /home/ubuntu/node_backup/nms_upgrade.log
