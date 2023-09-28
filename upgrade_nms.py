@@ -1,7 +1,7 @@
 import subprocess
 
 # Command to run
-command = "./nms_web_server > nms_web_server.log 2>&1 &"
+command = "./nms_web_server > nms_web_server.log 2>&1 "
 
 # Run the command using subprocess
 try:
