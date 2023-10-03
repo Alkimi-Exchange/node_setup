@@ -2,7 +2,7 @@
 shopt -s extglob  ## this is to add exlude a folder in a cp command
 cd /home/ubuntu/node_setup
 docker-compose down
-pkill -f "nms_web_server" 
+pkill -9 -f "nms_web_server" 
 folder_name="nms"$(date +%Y%m%d%H%M%S)
 mkdir -p /home/ubuntu/node_backup/"$folder_name"
 cp -rp /home/ubuntu/node_setup/ /home/ubuntu/node_backup/"$folder_name"
