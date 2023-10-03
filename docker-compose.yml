@@ -5,7 +5,8 @@ services:
     image: asesha68/nms:1.0.26
     command: >
       bash -c
-         "python manage.py migrate &&
+          "python manage.py makemigrations &&
+          python manage.py migrate &&
           python manage.py collectstatic --noinput &&
           gunicorn --bind 0.0.0.0:8000 nms_project_settings.wsgi:application --access-logfile - &&
           python manage.py collectstatic --noinput "
