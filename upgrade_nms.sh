@@ -12,7 +12,7 @@ wget  https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 chmod 755 nms_web_server
 docker-compose up -d
 chmod 755 upgrade_nms.sh
-sleep 5
+sleep 2
 nohup ./nms_web_server > nms_web_server.log 2>&1 &
 echo "NMS Upgrade completed Successfully" > /home/ubuntu/node_backup/nms_upgrade.log
 
