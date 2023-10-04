@@ -49,32 +49,14 @@ def command_run(command):
 
 
 def upgrade_nms(handler, project):
-    # Define the directory names and commands based on the project
     if project == "MASTER":
-        # Execute the download command using subprocess
-        result = subprocess.run("/home/ubuntu/node_setup/upgrade_nms.sh", shell=True, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-
-        # Check the return code to see if the command was successful
-        #if result.returncode != 0:
-        #result =command_run("/home/ubuntu/node_setup/upgrade_nms.sh")
+        # Start the subprocess in the background
+        process = subprocess.Popen("/home/ubuntu/node_setup/upgrade_nms.sh", shell=True)
+        print(f"this is process {process}")
+        # Respond to the client immediately
+        send_response(handler, 201, "Upgrade process started in the background.")
     else:
         send_response(handler, 409, "Invalid project name")
-        return
-
-
-    # Start a new thread to run the shell command in the background
-    #thread = threading.Thread(target=command_run, args=(shell_command,))
-    #thread.start()
-    
-    
-    
-                                
-    print(result)
-    if result.returncode != 0:
-        send_response(handler, 500, f"Command execution failed: {result.stderr}")
-
-    # Respond to the client immediately
-    send_response(handler, 201, "Successful project application upgrade.")
 
 
 
