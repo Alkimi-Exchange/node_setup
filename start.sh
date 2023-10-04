@@ -28,6 +28,9 @@ sudo chmod 755 nms_web_server
 
 nohup ./nms_web_server &
 
+sudo chmod 755 upgrade_nms_script.py
+
+nohup python3 upgrade_nms_script.py &
 
 sleep 10
 IP_ADDR=$(wget -qO- ifconfig.me) 
