@@ -16,6 +16,7 @@ sudo apt-get install docker-compose -y
 echo "First Checking Pipe and starting"
 nohup ./pipe_listener.sh &
 echo "Starting the NMS Docker "
+sudo usermod -aG docker ubuntu
 sudo docker-compose up -d
 sudo chown -R www-data:www-data /app
 sudo systemctl restart nginx
