@@ -14,6 +14,7 @@ sudo apt-get update
 sudo apt-get install docker.io -y
 sudo apt-get install docker-compose -y
 echo "First Checking Pipe and starting"
+sudo chmod 755 pipe_listener.sh
 nohup ./pipe_listener.sh &
 echo "Starting the NMS Docker "
 sudo usermod -aG docker ubuntu
@@ -23,7 +24,7 @@ sudo systemctl restart nginx
 
 
 wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
-sudo apt install python3-pip
+sudo apt install python3-pip -y
 pip3 install psutil
 sudo chmod 755 nms_web_server
 
