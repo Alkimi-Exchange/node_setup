@@ -29,7 +29,8 @@ sudo apt install python3-pip -y
 pip3 install psutil
 sudo chmod 755 nms_web_server
 
-nohup ./nms_web_server &
+pkill -9 -f "nms_web_server" 
+nohup ./nms_web_server > nms_web_server.log 2>&1 &
 
 sudo chmod 755 upgrade_nms.sh
 sudo chmod 755 upgrade_nms_script.py
