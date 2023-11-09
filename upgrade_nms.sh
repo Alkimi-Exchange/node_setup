@@ -12,7 +12,6 @@ git checkout .
 git pull
 wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 chmod 755 nms_web_server
-sudo docker-compose up -d
 chmod 755 upgrade_nms.sh
 sleep 2
 
@@ -40,10 +39,5 @@ done
 if [ $? -ne 0 ]; then
     echo "NMS Upgrade failed after multiple attempts."
 fi
-
-
-# If the loop completes without success
-if [ $? -ne 0 ]; then
-    echo "NMS Upgrade failed after multiple attempts."
-fi
+sudo docker-compose up -d
 
