@@ -13,7 +13,7 @@ fuser -k 8001/tcp
 chmod 755 nms_web_server
 sudo docker-compose up -d
 chmod 755 upgrade_nms.sh
-sleep 4
+sleep 10
 nohup ./nms_web_server > nms_web_server.log 2>&1 &
 echo "NMS Upgrade completed Successfully" > /home/ubuntu/node_backup/nms_upgrade.log
 
