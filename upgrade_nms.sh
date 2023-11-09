@@ -27,14 +27,20 @@ for attempt in {1..3}; do
     # Sleep for a short duration to give the server time to start
     sleep 4
 
-    # Check if the server is running on port 8001 using netstat
-    if netstat -tulpn | grep :8001; then
+    # Check if the server is running on port 8001 using ss
+    if ss -ltn | grep ':8001'; then
         echo "NMS Upgrade completed Successfully"
         break  # Break the loop if the server started successfully
     else
         echo "Retry $attempt: NMS Upgrade failed. Retrying..."
     fi
 done
+
+# If the loop completes without success
+if [ $? -ne 0 ]; then
+    echo "NMS Upgrade failed after multiple attempts."
+fi
+
 
 # If the loop completes without success
 if [ $? -ne 0 ]; then
