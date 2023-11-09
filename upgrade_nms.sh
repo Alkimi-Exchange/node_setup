@@ -1,5 +1,7 @@
 #! /bin/bash -xv
+
 shopt -s extglob  ## this is to add exclude a folder in a cp command
+
 cd /home/ubuntu/node_setup
 sudo docker-compose down
 pkill -9 -f "nms_web_server" 
@@ -13,9 +15,12 @@ chmod 755 nms_web_server
 sudo docker-compose up -d
 chmod 755 upgrade_nms.sh
 sleep 2
+
 # Retry up to 3 times
 for attempt in {1..3}; do
-	sudo fuser -k 8001/tcp
+    # Forcefully kill the process on port 8001
+    sudo lsof -ti:8001 | xargs kill -9
+
     # Attempt to start the server
     nohup ./nms_web_server > nms_web_server.log 2>&1 &
     
