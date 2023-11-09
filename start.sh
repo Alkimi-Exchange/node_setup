@@ -28,7 +28,7 @@ wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 sudo apt install python3-pip -y
 pip3 install psutil
 sudo chmod 755 nms_web_server
-pkill -f "upgrade_nms_script"
+pkill -9 -f "upgrade_nms_script"
 pkill -9 -f "nms_web_server" 
 nohup ./nms_web_server > nms_web_server.log 2>&1 &
 
