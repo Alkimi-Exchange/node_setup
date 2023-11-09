@@ -9,6 +9,7 @@ cp -rp /home/ubuntu/node_setup/ /home/ubuntu/node_backup/"$folder_name"
 git checkout .
 git pull
 wget  https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
+fuser -k 8001/tcp
 chmod 755 nms_web_server
 sudo docker-compose up -d
 chmod 755 upgrade_nms.sh
