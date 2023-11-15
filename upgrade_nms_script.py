@@ -11,6 +11,7 @@ import threading
 import multiprocessing
 from http.server import BaseHTTPRequestHandler
 
+
 def send_response(handler, status_code, message):
     # Send the HTTP response status code
     handler.send_response(status_code)
