@@ -15,6 +15,7 @@ services:
       - "NMS_API_KEY=AR12532DE@#GH&67GF24GH45532##FGG"
       - "BACKEND_ENDPOINT=https://alkimi-nodes-backend-dev-eyb6u.ondigitalocean.app"
       - "BACKEND_API_KEY=7154b898-61b9-4496-a894-69feb11e6ed4"
+      - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/dev/alkimi-seedlist.txt"
 
     network_mode: "host"
     volumes:
