@@ -26,4 +26,4 @@ NODE_ID=$(curl  -s -X 'POST' \
 echo " Your Node id Is:  $NODE_ID "
 #!/bin/bash
 # update the ip to backend
-curl -X POST http://127.0.0.1:9000/nms_app/ip_update/
+curl -X POST http://$IP_ADDR:9000/nms_app/ip_update/
