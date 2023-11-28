@@ -14,7 +14,7 @@ services:
     environment:
       - "NMS_API_KEY=E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB"
       - "BACKEND_ENDPOINT=https://alkimi-nodes-backend-qa-tokpo.ondigitalocean.app"
-      - "BACKEND_API_KEY=76b3d94e-5583-4768-b39b-e1b51b5567c4"
+      - "BACKEND_API_KEY=63513aaf-bc9e-454c-a4d0-5db3df37b70a"
       - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/qa/"
 
     network_mode: "host"
