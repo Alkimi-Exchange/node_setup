@@ -6,8 +6,8 @@ git checkout origin nms.cfg
 sed -i -e 's/localhost/'$IP'/g' nms.cfg
 sudo cp ./nms.cfg /etc/nginx/sites-available/
 sudo ln -s /etc/nginx/sites-available/nms.cfg /etc/nginx/sites-enabled/
-sudo systemctl start nginx
-sudo docker-compose up -d
+sudo systemctl restart nginx
+sudo docker-compose restart
 sleep 10
 IP_ADDR=$(wget -qO- ifconfig.me) 
 echo "### Node Setup Completed  ##"
