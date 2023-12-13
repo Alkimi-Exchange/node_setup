@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   nms:
-    image: alkimiorg/nms:1.0.108
+    image: alkimiorg/nms:v1.0.7
     command: >
       bash -c
           "python manage.py makemigrations &&
@@ -14,7 +14,7 @@ services:
     environment:
       - "NMS_API_KEY=GFA2V8ZQDCORI86ZFDT13G6SYJEXSA93"
       - "BACKEND_ENDPOINT=https://alkiminodes-backend-production-jrlib.ondigitalocean.app"
-      - "BACKEND_API_KEY=7154b898-61b9-4496-a894-69feb11e6ed4"
+      - "BACKEND_API_KEY=d97f3836-6cec-4a0d-a0de-c989b17bf5c6"
       - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/prod/"
 
     network_mode: "host"
