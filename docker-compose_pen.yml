@@ -1,0 +1,25 @@
+version: "3.0"
+
+services:
+  nms:
+    image: alkimiorg/nms:v1.0.20
+    command: >
+      bash -c
+          "python manage.py makemigrations &&
+          python manage.py migrate &&
+          python manage.py collectstatic --noinput &&
+          gunicorn --bind 0.0.0.0:8000 nms_project_settings.wsgi:application --access-logfile - &&
+          python manage.py collectstatic --noinput "
+          
+    environment:
+      - "NMS_API_KEY=E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB"
+      - "BACKEND_ENDPOINT=https://alkiminodes-backend-pentest-go9s9.ondigitalocean.app"
+      - "BACKEND_API_KEY=a42ceda0-cce9-46a5-a0ca-b60796308fd7"
+      - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/qa/"
+
+    network_mode: "host"
+    volumes:
+      - ./app/databases:/home/ubuntu/nms_project/database
+      - /app/static:/app/static
+      - /home/ubuntu:/home/ubuntu
+      - /app/docker_pipes:/app/docker_pipes
