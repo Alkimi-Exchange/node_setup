@@ -12,7 +12,7 @@ services:
           python manage.py collectstatic --noinput "
           
     environment:
-      - "NMS_API_KEY=E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB"
+      - "NMS_API_KEY=LK49JOGW3BEQGN70HYHX1D42448EJ98A"
       - "BACKEND_ENDPOINT=https://alkiminodes-backend-pentest-go9s9.ondigitalocean.app"
       - "BACKEND_API_KEY=a42ceda0-cce9-46a5-a0ca-b60796308fd7"
       - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/qa/"
