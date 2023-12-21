@@ -1,3 +1,9 @@
+if [ $USER != "ubuntu" ] ; then
+        echo "You are not executing this script as Ubuntu user"
+        echo "Stopping the installtion"
+        echo "login as ubuntu user to continue installation"
+        exit
+fi
 IP=$(curl -s ifconfig.me)
 echo "Installing NGINX"
 sudo apt-get update
