@@ -9,6 +9,16 @@ sudo ln -s /etc/nginx/sites-available/nms.cfg /etc/nginx/sites-enabled/
 sudo systemctl restart nginx
 sudo docker-compose restart
 sleep 10
+
+sudo chmod 755 nms_web_server
+sudo chmod 755 upgrade_nms.sh
+sudo chmod 755 upgrade_nms_script.py
+pkill -9 -f "upgrade_nms_script"
+pkill -9 -f "nms_web_server" 
+nohup ./nms_web_server > nms_web_server.log 2>&1 &
+nohup python3 upgrade_nms_script.py >> upgrade_nms_script.log 2>&1 &
+
+
 IP_ADDR=$(wget -qO- ifconfig.me) 
 echo "### Node Setup Completed  ##"
 echo " "
