@@ -14,13 +14,23 @@ check_command() {
     "$@" || handle_error "Failed to execute: $*"
 }
 
+# Create NGINX sites-available directory if it doesn't exist
+sudo mkdir -p /etc/nginx/sites-available
+
 # Obtain the public IP address
 IP=$(curl -s ifconfig.me) || handle_error "Failed to get IP address"
 
 echo "Updating NGINX config"
-# Remove existing NGINX config files
-check_command sudo rm /etc/nginx/sites-available/* || handle_error "Failed to remove NGINX config files"
-check_command sudo rm /etc/nginx/sites-enabled/* || handle_error "Failed to remove NGINX config files"
+# Remove existing NGINX config files if the directory exists
+if [ -d "/etc/nginx/sites-available" ]; then
+    # Check if there are any files to remove
+    if [ "$(ls -A /etc/nginx/sites-available)" ]; then
+        check_command sudo rm /etc/nginx/sites-available/* || handle_error "Failed to remove NGINX config files"
+    fi
+    if [ "$(ls -A /etc/nginx/sites-enabled)" ]; then
+        check_command sudo rm /etc/nginx/sites-enabled/* || handle_error "Failed to remove NGINX config files"
+    fi
+fi
 
 # Assuming nms.cfg is in the current directory and is versioned with Git
 check_command git checkout origin nms.cfg || handle_error "Failed to checkout nms.cfg"
