@@ -1,5 +1,6 @@
 #!/bin/bash
 
+export HOME=/home/ubuntu
 # Change directory to the script's directory
 cd "$(dirname "$0")" || exit
 
@@ -31,7 +32,7 @@ if [ -d "/etc/nginx/sites-available" ]; then
         check_command sudo rm /etc/nginx/sites-enabled/* || handle_error "Failed to remove NGINX config files"
     fi
 fi
-
+git config --global --add safe.directory /home/ubuntu/node_setup
 # Assuming nms.cfg is in the current directory and is versioned with Git
 check_command git checkout origin nms.cfg || handle_error "Failed to checkout nms.cfg"
 sed -i -e 's/localhost/'"$IP"'/g' nms.cfg || handle_error "Failed to replace IP in nms.cfg"
