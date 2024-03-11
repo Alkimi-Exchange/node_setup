@@ -22,4 +22,5 @@ services:
       - ./app/databases:/home/ubuntu/nms_project/database
       - /app/static:/app/static
       - /home/ubuntu:/home/ubuntu
+      - ./nms_logs:/app/nms_logs
       - /app/docker_pipes:/app/docker_pipes
