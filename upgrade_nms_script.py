@@ -48,14 +48,15 @@ def command_run(command):
 
 
 def upgrade_nms(handler, project):
-    if project == "MASTER":
+    try:
         # Start the subprocess in the background
         process = subprocess.Popen("/home/ubuntu/node_setup/upgrade_nms.sh", shell=True)
         print(f"this is process {process}")
         # Respond to the client immediately
         send_response(handler, 201, "Upgrade process started in the background.")
-    else:
-        send_response(handler, 409, "Invalid project name")
+    except Exception as e:
+        print(f"Error during command execution: {str(e)}")
+
 
 
 
