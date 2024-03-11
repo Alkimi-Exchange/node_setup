@@ -21,7 +21,7 @@ sleep 2
 SERVICE_STATUS=$(systemctl is-active nms_service.service 2>/dev/null)
 
 # Check if the service is running
-if [ "$SERVICE_STATUS" = "active" ]; then
+if [ "$SERVICE_STATUS" != "active" ]; then
     # Define paths
     EXISTING_SERVICE_FILE="/etc/systemd/system/nms_service.service"
     NEW_SERVICE_FILE="/home/ubuntu/node_setup/nms_service.service"
@@ -53,5 +53,3 @@ else
     echo "Restarting nms_service.service"
     
 fi
-
-
