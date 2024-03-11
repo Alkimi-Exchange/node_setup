@@ -4,7 +4,6 @@ import shutil
 import socketserver
 import os
 import subprocess
-import psutil
 import json
 import time 
 import threading
