@@ -24,7 +24,7 @@ sudo chown -R www-data:www-data /app
 wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 sudo apt install python3-pip -y
 pip3 install psutil
-sudo chmod 755 nms_web_serve
+sudo chmod 755 nms_web_server
 sudo chmod 755 upgrade_nms.sh
 sudo chmod 755 upgrade_nms_script.py
 sudo chmod 755 watch_process.sh
