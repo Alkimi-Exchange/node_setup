@@ -14,6 +14,7 @@ git pull
 wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 sudo chmod 755 nms_web_server
 sudo chmod 755 upgrade_nms.sh
+sudo chmod 755 watch_process.sh
 sudo chmod 755 update_after_reboot.sh
 sleep 2
 
