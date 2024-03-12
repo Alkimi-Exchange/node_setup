@@ -46,7 +46,7 @@ sleep 2
 sudo usermod -aG docker ubuntu
 # Bring up Docker containers
 sudo docker-compose up -d || handle_error "Failed to bring up Docker containers"
-sleep 10
+sleep 2
 sudo chown -R www-data:www-data /app
 check_command sudo systemctl restart nginx || handle_error "Failed to restart NGINX"
 # Set permissions for scripts
@@ -54,6 +54,10 @@ check_command sudo chmod 755 nms_web_server || handle_error "Failed to set permi
 check_command sudo chmod 755 upgrade_nms.sh || handle_error "Failed to set permissions for upgrade_nms.sh"
 check_command sudo chmod 755 upgrade_nms_script.py || handle_error "Failed to set permissions for upgrade_nms_script.py"
 check_command sudo chmod 755 watch_process.sh || handle_error "Failed to set permissions for watch_process.sh"
+
+check_command sudo chmod 755 nms_web_server.log || handle_error "Failed to set permissions for nms_web_server"
+check_command sudo chmod 755 upgrade_nms_script.log || handle_error "Failed to set permissions for upgrade_nms_script.py"
+check_command sudo chmod 755 watch_process.log || handle_error "Failed to set permissions for watch_process.sh"
 
 # Terminate existing instances of upgrade_nms_script and nms_web_server
 sudo pkill -9 -f "nms_web_server"
