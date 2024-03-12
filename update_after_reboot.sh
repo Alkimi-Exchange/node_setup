@@ -88,4 +88,4 @@ NODE_ID=$(echo "$NODE_ID" | cut -d ":" -f 3 | sed 's/.$//')
 echo " Your Node ID Is:  $NODE_ID "
 
 # Update the IP address to the backend
-curl -X POST "http://$IP_ADDR:9000/nms_app/ip_update/" || handle_error "Failed to update IP address to the backend"
+curl -X POST "http://$IP_ADDR:9000/nms_app/ip_update/" >/dev/null 2>&1
