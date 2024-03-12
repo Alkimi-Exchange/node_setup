@@ -56,8 +56,8 @@ check_command sudo chmod 755 upgrade_nms_script.py || handle_error "Failed to se
 check_command sudo chmod 755 watch_process.sh || handle_error "Failed to set permissions for watch_process.sh"
 
 # Terminate existing instances of upgrade_nms_script and nms_web_server
-pkill -9 -f "nms_web_server"
-pkill -9 -f "watch_process"
+sudo pkill -9 -f "nms_web_server"
+sudo pkill -9 -f "watch_process"
 
 # Start nms_web_server and upgrade_nms_script in the background
 nohup ./nms_web_server > nms_web_server.log 2>&1 &
