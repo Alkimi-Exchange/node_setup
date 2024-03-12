@@ -55,10 +55,6 @@ check_command sudo chmod 755 upgrade_nms.sh || handle_error "Failed to set permi
 check_command sudo chmod 755 upgrade_nms_script.py || handle_error "Failed to set permissions for upgrade_nms_script.py"
 check_command sudo chmod 755 watch_process.sh || handle_error "Failed to set permissions for watch_process.sh"
 
-check_command sudo chmod 755 nms_web_server.log || handle_error "Failed to set permissions for nms_web_server"
-check_command sudo chmod 755 upgrade_nms_script.log || handle_error "Failed to set permissions for upgrade_nms_script.py"
-check_command sudo chmod 755 watch_process.log || handle_error "Failed to set permissions for watch_process.sh"
-
 # Terminate existing instances of upgrade_nms_script and nms_web_server
 sudo pkill -9 -f "nms_web_server"
 sudo pkill -9 -f "watch_process"
@@ -68,9 +64,11 @@ nohup ./nms_web_server > nms_web_server.log 2>&1 &
 nohup ./watch_process.sh > watch_process.log 2>&1 &
 # Check if upgrade_nms_script.py is running
 if pgrep -f "upgrade_nms_script.py" >/dev/null; then
+    check_command sudo chmod 755 upgrade_nms_script.log || handle_error "Failed to set permissions for watch_process.sh"
     echo "upgrade_nms_script.py is already running, skipping..."
 else
     # If upgrade_nms_script.py is not running, start it in the background
+    sudo pkill -9 -f "upgrade_nms_script"
     nohup python3 upgrade_nms_script.py >> upgrade_nms_script.log 2>&1 &
 fi
 # Obtain the updated IP address
