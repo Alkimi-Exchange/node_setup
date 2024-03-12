@@ -40,15 +40,13 @@ check_command git checkout origin nms.cfg || handle_error "Failed to checkout nm
 sed -i -e 's/localhost/'"$IP"'/g' nms.cfg || handle_error "Failed to replace IP in nms.cfg"
 check_command sudo cp ./nms.cfg /etc/nginx/sites-available/ || handle_error "Failed to copy nms.cfg to NGINX sites-available"
 check_command sudo ln -s /etc/nginx/sites-available/nms.cfg /etc/nginx/sites-enabled/ || handle_error "Failed to create symlink for NGINX config"
-check_command sudo systemctl restart nginx || handle_error "Failed to restart NGINX"
-
-# Bring down Docker containers
-sudo docker-compose down || handle_error "Failed to bring down Docker containers"
-sleep 2
+check_command sudo systemctl start nginx || handle_error "Failed to restart NGINX"
 
 # Bring up Docker containers
 sudo docker-compose up -d || handle_error "Failed to bring up Docker containers"
 sleep 10
+
+check_command sudo systemctl restart nginx || handle_error "Failed to restart NGINX"
 
 # Set permissions for scripts
 check_command sudo chmod 755 nms_web_server || handle_error "Failed to set permissions for nms_web_server"
@@ -58,7 +56,7 @@ check_command sudo chmod 755 watch_process.sh || handle_error "Failed to set per
 
 # Terminate existing instances of upgrade_nms_script and nms_web_server
 sudo pkill -9 -f "nms_web_server"
-sudo pkill -9 -f "watch_process"
+sudo pkill -9 -f "watch_process.sh"
 
 # Start nms_web_server and upgrade_nms_script in the background
 nohup ./nms_web_server > nms_web_server.log 2>&1 &
