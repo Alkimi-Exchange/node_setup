@@ -41,11 +41,10 @@ sed -i -e 's/localhost/'"$IP"'/g' nms.cfg || handle_error "Failed to replace IP 
 check_command sudo cp ./nms.cfg /etc/nginx/sites-available/ || handle_error "Failed to copy nms.cfg to NGINX sites-available"
 check_command sudo ln -s /etc/nginx/sites-available/nms.cfg /etc/nginx/sites-enabled/ || handle_error "Failed to create symlink for NGINX config"
 check_command sudo systemctl start nginx || handle_error "Failed to restart NGINX"
-sleep 2
 sudo usermod -aG docker ubuntu
 # Bring up Docker containers
 sudo docker-compose up -d || handle_error "Failed to bring up Docker containers"
-sleep 5
+sleep 1
 sudo chown -R www-data:www-data /app
 check_command sudo systemctl restart nginx || handle_error "Failed to restart NGINX"
 
@@ -78,7 +77,7 @@ else
     nohup python3 upgrade_nms_script.py >> upgrade_nms_script.log 2>&1 &
 fi
 sudo docker-compose restart
-sleep 5
+sleep 12
 IP_ADDR=$(wget -qO- ifconfig.me) 
 echo "### Node Setup Completed  ##"
 echo " "
