@@ -7,8 +7,9 @@ sudo docker-compose down
 sudo pkill -9 -f "nms_web_server" 
 folder_name="nms"$(date +%Y%m%d%H%M%S)
 sudo rm -f nms_web_server
-mkdir -p /home/ubuntu/node_backup/"$folder_name"
-cp -rp /home/ubuntu/node_setup/ /home/ubuntu/node_backup/"$folder_name"
+
+sudo mkdir -p /home/ubuntu/node_backup/"$folder_name"
+sudo cp -rp /home/ubuntu/node_setup/ /home/ubuntu/node_backup/"$folder_name"
 git checkout .
 git pull
 wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
