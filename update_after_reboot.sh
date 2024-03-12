@@ -41,19 +41,13 @@ sed -i -e 's/localhost/'"$IP"'/g' nms.cfg || handle_error "Failed to replace IP 
 check_command sudo cp ./nms.cfg /etc/nginx/sites-available/ || handle_error "Failed to copy nms.cfg to NGINX sites-available"
 check_command sudo ln -s /etc/nginx/sites-available/nms.cfg /etc/nginx/sites-enabled/ || handle_error "Failed to create symlink for NGINX config"
 check_command sudo systemctl start nginx || handle_error "Failed to restart NGINX"
-sudo docker-compose down || handle_error "Failed to bring up Docker containers"
 sleep 2
 sudo usermod -aG docker ubuntu
 # Bring up Docker containers
-sudo docker-compose up -d || handle_error "Failed to bring up Docker containers"
+sudo docker-compose restart || handle_error "Failed to bring up Docker containers"
 sleep 5
 sudo chown -R www-data:www-data /app
 check_command sudo systemctl restart nginx || handle_error "Failed to restart NGINX"
-# Set permissions for scripts
-check_command sudo chmod 755 nms_web_server || handle_error "Failed to set permissions for nms_web_server"
-check_command sudo chmod 755 upgrade_nms.sh || handle_error "Failed to set permissions for upgrade_nms.sh"
-check_command sudo chmod 755 upgrade_nms_script.py || handle_error "Failed to set permissions for upgrade_nms_script.py"
-check_command sudo chmod 755 watch_process.sh || handle_error "Failed to set permissions for watch_process.sh"
 
 # Terminate existing instances of upgrade_nms_script and nms_web_server
 sudo pkill -9 -f "nms_web_server"
