@@ -44,7 +44,7 @@ check_command sudo systemctl start nginx || handle_error "Failed to restart NGIN
 sleep 2
 sudo usermod -aG docker ubuntu
 # Bring up Docker containers
-sudo docker-compose restart || handle_error "Failed to bring up Docker containers"
+sudo docker-compose up -d || handle_error "Failed to bring up Docker containers"
 sleep 5
 sudo chown -R www-data:www-data /app
 check_command sudo systemctl restart nginx || handle_error "Failed to restart NGINX"
@@ -64,22 +64,23 @@ else
     sudo pkill -9 -f "upgrade_nms_script"
     nohup python3 upgrade_nms_script.py >> upgrade_nms_script.log 2>&1 &
 fi
-# Obtain the updated IP address
-IP_ADDR=$(wget -qO- ifconfig.me) || handle_error "Failed to get updated IP address"
+sudo docker-compose restart
+sleep 5
+IP_ADDR=$(wget -qO- ifconfig.me) 
 echo "### Node Setup Completed  ##"
 echo " "
 echo " Please note down below details"
 echo " ------ ---- ---- ----- -------"
 echo " "
-echo " Your node IP Address: $IP_ADDR"
+echo " You node IP Address: $IP_ADDR"
 URL="http://$IP_ADDR:8000/nms_app/get_node_id/"
 NODE_ID=$(curl  -s -X 'POST' \
   $URL \
   -H 'accept: application/json' \
-  -H 'authorization: E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB' \
-  -d '') || handle_error "Failed to get Node ID"
-NODE_ID=$(echo "$NODE_ID" | cut -d ":" -f 3 | sed 's/.$//')
-echo " Your Node ID Is:  $NODE_ID "
-
-# Update the IP address to the backend
-curl -X POST "http://$IP_ADDR:9000/nms_app/ip_update/" >/dev/null 2>&1
+  -H 'authorization: LK49JOGW3BEQGN70HYHX1D42448EJ98A' \
+  -d '')
+  NODE_ID=$(echo "$NODE_ID" | cut -d ":" -f 3 | sed 's/.$//')
+echo " Your Node id Is:  $NODE_ID "
+#!/bin/bash
+# update the ip to backend
+curl -X POST http://$IP_ADDR:9000/nms_app/ip_update/
