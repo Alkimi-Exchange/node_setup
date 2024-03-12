@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   nms:
-    image: alkimiorg/nms:v1.1.11
+    image: alkimiorg/nms:v1.1.12
     command: >
       bash -c
           "python manage.py makemigrations &&
