@@ -17,7 +17,6 @@ sudo apt-get install docker.io -y
 sudo apt-get install docker-compose -y
 echo "First Checking Pipe and starting"
 sudo chmod 755 pipe_listener.sh
-sudo chmod 755 update_after_reboot.sh
 nohup ./pipe_listener.sh &
 echo "Starting the NMS Docker "
 sudo usermod -aG docker ubuntu
@@ -25,7 +24,11 @@ sudo chown -R www-data:www-data /app
 wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 sudo apt install python3-pip -y
 pip3 install psutil
-
+sudo chmod 755 nms_web_serve
+sudo chmod 755 upgrade_nms.sh
+sudo chmod 755 upgrade_nms_script.py
+sudo chmod 755 watch_process.sh
+sudo chmod 755 update_after_reboot.sh
 #------------------------systemctl----------------------------------
 # Check if the service is running
 EXISTING_SERVICE_FILE="/etc/systemd/system/nms_service.service"
