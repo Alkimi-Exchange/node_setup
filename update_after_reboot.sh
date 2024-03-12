@@ -53,6 +53,21 @@ check_command sudo systemctl restart nginx || handle_error "Failed to restart NG
 sudo pkill -9 -f "nms_web_server"
 sudo pkill -9 -f "watch_process"
 
+# Define an array of file names to remove
+files_to_remove=("watch_process.log" "upgrade_nms_script.log","nms_web_server.log")
+
+# Loop through each file name
+for file in "${files_to_remove[@]}"; do
+    # Check if the file exists
+    if [ -f "$file" ]; then
+        echo "Removing $file..."
+        sudo rm -f "$file"
+        echo "$file removed."
+    else
+        echo "$file does not exist. Skipping removal."
+    fi
+done
+
 # Start nms_web_server and upgrade_nms_script in the background
 nohup ./nms_web_server > nms_web_server.log 2>&1 &
 nohup ./watch_process.sh > watch_process.log 2>&1 &
@@ -60,8 +75,6 @@ nohup ./watch_process.sh > watch_process.log 2>&1 &
 if pgrep -f "upgrade_nms_script.py" >/dev/null; then
     echo "upgrade_nms_script.py is already running, skipping..."
 else
-    # If upgrade_nms_script.py is not running, start it in the background
-    sudo pkill -9 -f "upgrade_nms_script"
     nohup python3 upgrade_nms_script.py >> upgrade_nms_script.log 2>&1 &
 fi
 sudo docker-compose restart
