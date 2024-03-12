@@ -20,8 +20,8 @@ sudo chmod 755 pipe_listener.sh
 sudo chmod 755 update_after_reboot.sh
 nohup ./pipe_listener.sh &
 echo "Starting the NMS Docker "
-sudo usermod -aG docker ubuntu
-sudo chown -R www-data:www-data /app
+#sudo usermod -aG docker ubuntu
+#sudo chown -R www-data:www-data /app
 wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 sudo apt install python3-pip -y
 pip3 install psutil
@@ -54,7 +54,7 @@ echo "Restarting nms_service.service"
 sudo systemctl restart nms_service.service
 
 
-sleep 10
+sleep 2
 IP_ADDR=$(wget -qO- ifconfig.me) 
 echo "### Node Setup Completed  ##"
 echo " "
