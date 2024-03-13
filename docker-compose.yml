@@ -12,7 +12,7 @@ services:
           
     environment:
       - "NMS_API_KEY=GFA2V8ZQDCORI86ZFDT13G6SYJEXSA93"
-      - "BACKEND_ENDPOINT=https://alkiminodes-backend-production-jrlib.ondigitalocean.app"
+      - "BACKEND_ENDPOINT=https://alkiminodes-backend-pentest-go9s9.ondigitalocean.app"
       - "BACKEND_API_KEY=d97f3836-6cec-4a0d-a0de-c989b17bf5c6"
       - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/prod/"
 
