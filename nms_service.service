@@ -1,0 +1,14 @@
+[Unit]
+Description=ip update script
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/ubuntu/node_setup/update_after_reboot.sh
+RemainAfterExit=true
+TimeoutStartSec=0
+
+[Install]
+WantedBy=multi-user.target
+
