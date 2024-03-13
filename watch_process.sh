@@ -51,7 +51,7 @@ main() {
     while true; do
         check_and_restart_containers
         check_and_restart_processes
-        sleep 100  # Sleep for 10 minutes
+        sleep 600  # Sleep for 10 minutes
     done
 }
 
