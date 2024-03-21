@@ -24,7 +24,7 @@ sudo chown -R www-data:www-data /app
 sudo systemctl restart nginx
 
 
-wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/prod/nms_web_server
+wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/stg/nms_web_server
 sudo apt install python3-pip -y
 pip3 install psutil
 sudo chmod 755 nms_web_server
