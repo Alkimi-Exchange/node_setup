@@ -53,3 +53,4 @@ NODE_ID=$(curl  -s -X 'POST' \
   -d '')
   NODE_ID=$(echo "$NODE_ID" | cut -d ":" -f 3 | sed 's/.$//')
 echo " Your Node id Is:  $NODE_ID "
+
