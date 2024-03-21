@@ -11,7 +11,7 @@ mkdir -p /home/ubuntu/node_backup/"$folder_name"
 cp -rp /home/ubuntu/node_setup/ /home/ubuntu/node_backup/"$folder_name"
 git checkout .
 git pull
-wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
+wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/prod/nms_web_server
 chmod 755 nms_web_server
 chmod 755 upgrade_nms.sh
 sleep 2
@@ -41,5 +41,3 @@ if [ $? -ne 0 ]; then
     echo "NMS Upgrade failed after multiple attempts."
 fi
 sudo docker-compose up -d
-
-
