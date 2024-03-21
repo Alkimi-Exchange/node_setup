@@ -30,7 +30,7 @@ URL="http://$IP_ADDR:8000/nms_app/get_node_id/"
 NODE_ID=$(curl  -s -X 'POST' \
   $URL \
   -H 'accept: application/json' \
-  -H 'authorization: GFA2V8ZQDCORI86ZFDT13G6SYJEXSA93' \
+  -H 'authorization: VFD68FP65NTYR6V4WE5DM2388BHA4UNI' \
   -d '')
   NODE_ID=$(echo "$NODE_ID" | cut -d ":" -f 3 | sed 's/.$//')
 echo " Your Node id Is:  $NODE_ID "
