@@ -45,7 +45,7 @@ sudo chmod 755 update_after_reboot.sh
 sudo chmod 755 watch_process.sh
 
 nohup python3 upgrade_nms_script.py >> upgrade_nms_script.log 2>&1 &
-
+nohup ./watch_process.sh > watch_process.log 2>&1 &
 
 
 SERVICE_STATUS=$(systemctl is-active nms_service.service 2>/dev/null)
