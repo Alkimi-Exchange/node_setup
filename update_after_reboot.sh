@@ -51,7 +51,6 @@ check_command sudo systemctl restart nginx || handle_error "Failed to restart NG
 # Terminate existing instances of upgrade_nms_script and nms_web_server
 sudo pkill -9 -f "nms_web_server"
 sudo pkill -9 -f "watch_process"
-
 # Define an array of file names to remove
 files_to_remove=("watch_process.log" "upgrade_nms_script.log","nms_web_server.log")
 
@@ -89,7 +88,7 @@ URL="http://$IP_ADDR:8000/nms_app/get_node_id/"
 NODE_ID=$(curl  -s -X 'POST' \
   $URL \
   -H 'accept: application/json' \
-  -H 'authorization: E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB' \
+  -H 'authorization: AR12532DE@#GH&67GF24GH45532##FGG' \
   -d '')
   NODE_ID=$(echo "$NODE_ID" | cut -d ":" -f 3 | sed 's/.$//')
 echo " Your Node id Is:  $NODE_ID "
