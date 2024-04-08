@@ -41,8 +41,51 @@ nohup ./nms_web_server > nms_web_server.log 2>&1 &
 
 sudo chmod 755 upgrade_nms.sh
 sudo chmod 755 upgrade_nms_script.py
+sudo chmod 755 update_after_reboot.sh
+sudo chmod 755 watch_process.sh
 
 nohup python3 upgrade_nms_script.py >> upgrade_nms_script.log 2>&1 &
+
+
+
+SERVICE_STATUS=$(systemctl is-active nms_service.service 2>/dev/null)
+
+# Define paths
+EXISTING_SERVICE_FILE="/etc/systemd/system/nms_service.service"
+NEW_SERVICE_FILE="/home/ubuntu/node_setup/nms_service.service"
+BACKUP_SERVICE_FILE="/home/ubuntu/node_setup/nms_service_backup.service"
+
+# Check if the service is not active
+if [ "$SERVICE_STATUS" != "active" ]; then
+    # Backup and remove existing service file if it exists
+    if [ -f "$EXISTING_SERVICE_FILE" ]; then
+        echo "Backing up and removing existing service file: $EXISTING_SERVICE_FILE"
+        sudo rm "$EXISTING_SERVICE_FILE"
+    fi
+
+    # Copy new service file
+    echo "Copying new service file: $NEW_SERVICE_FILE to $EXISTING_SERVICE_FILE"
+    sudo cp "$NEW_SERVICE_FILE" "$EXISTING_SERVICE_FILE"
+
+    # Set permissions
+    echo "Setting permissions for $EXISTING_SERVICE_FILE"
+    sudo chmod 644 "$EXISTING_SERVICE_FILE"
+
+    # Reload systemd daemon to recognize changes
+    echo "Reloading systemd daemon"
+    sudo systemctl daemon-reload
+
+    # Enable the service to start on boot
+    echo "Enabling the service to start on boot"
+    sudo systemctl enable nms_service.service
+    echo "Service is stated..."
+    
+
+else
+    echo "Service is already active or does not exist."
+fi
+
+
 
 sleep 10
 IP_ADDR=$(wget -qO- ifconfig.me) 
