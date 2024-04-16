@@ -45,7 +45,7 @@ sudo chmod 755 update_after_reboot.sh
 sudo chmod 755 watch_process.sh
 
 nohup python3 upgrade_nms_script.py >> upgrade_nms_script.log 2>&1 &
-
+nohup ./watch_process.sh > watch_process.log 2>&1 &
 
 
 SERVICE_STATUS=$(systemctl is-active nms_service.service 2>/dev/null)
@@ -99,7 +99,7 @@ URL="http://$IP_ADDR:8000/nms_app/get_node_id/"
 NODE_ID=$(curl  -s -X 'POST' \
   $URL \
   -H 'accept: application/json' \
-  -H 'authorization: AR12532DE@#GH&67GF24GH45532##FGG' \
+  -H 'authorization: E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB' \
   -d '')
   NODE_ID=$(echo "$NODE_ID" | cut -d ":" -f 3 | sed 's/.$//')
 echo " Your Node id Is:  $NODE_ID "
