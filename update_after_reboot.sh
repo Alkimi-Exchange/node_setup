@@ -50,7 +50,7 @@ check_command sudo systemctl restart nginx || handle_error "Failed to restart NG
 
 # Terminate existing instances of upgrade_nms_script and nms_web_server
 sudo pkill -9 -f "nms_web_server"
-
+sudo pkill -9 -f "watch_process"
 # Define an array of file names to remove
 files_to_remove=("watch_process.log" "upgrade_nms_script.log","nms_web_server.log")
 
@@ -68,6 +68,7 @@ done
 
 # Start nms_web_server and upgrade_nms_script in the background
 nohup ./nms_web_server > nms_web_server.log 2>&1 &
+nohup ./watch_process.sh > watch_process.log 2>&1 &
 # Check if upgrade_nms_script.py is running
 if pgrep -f "upgrade_nms_script.py" >/dev/null; then
     echo "upgrade_nms_script.py is already running, skipping..."
