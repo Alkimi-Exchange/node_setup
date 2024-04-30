@@ -84,7 +84,7 @@ if pgrep -f "watch_process.sh" >/dev/null; then
 else
     if [ -f watch_process.log ]; then
         # Set the permissions on the log file
-        sudo chmod 755 watch_process.log
+        sudo chmod 666 watch_process.log
     fi
     echo "watch_process.sh is not running. Starting it."
     # Start watch_process.sh in the background and redirect output to watch_process.log
