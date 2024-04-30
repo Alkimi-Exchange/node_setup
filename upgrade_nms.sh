@@ -50,6 +50,8 @@ BACKUP_SERVICE_FILE="/home/ubuntu/node_setup/nms_service_backup.service"
 
 # Check if the service is not active
 if [ "$SERVICE_STATUS" != "active" ]; then
+    sudo chmod 755 update_after_reboot.sh
+    sudo chmod 755 watch_process.sh
     # Backup and remove existing service file if it exists
     if [ -f "$EXISTING_SERVICE_FILE" ]; then
         echo "Backing up and removing existing service file: $EXISTING_SERVICE_FILE"
@@ -73,8 +75,6 @@ if [ "$SERVICE_STATUS" != "active" ]; then
     echo "Enabling the service to start on boot"
     sudo systemctl enable nms_service.service
     
-    sudo chmod 755 update_after_reboot.sh
-    sudo chmod 755 watch_process.sh
 else
     echo "Service is already active or does not exist."
 fi
@@ -82,6 +82,10 @@ if pgrep -f "watch_process.sh" >/dev/null; then
     echo "watch_process.sh is already running. Exiting."
     exit 0
 else
+    if [ -f watch_process.log ]; then
+        # Set the permissions on the log file
+        sudo chmod 666 watch_process.log
+    fi
     echo "watch_process.sh is not running. Starting it."
     # Start watch_process.sh in the background and redirect output to watch_process.log
     nohup ./watch_process.sh > watch_process.log 2>&1 &
