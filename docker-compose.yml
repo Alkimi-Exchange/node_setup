@@ -13,7 +13,7 @@ services:
     environment:
       - "NDATA1=E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB"
       - "ENDPOINT1=https://validator-node-backend-qa-5ov53.ondigitalocean.app"
-      - "BDATA1=63513aaf-bc9e-454c-a4d0-5db3df37b70a"
+      - "BDATA1=63513a20-2020-454c-2020-5d202037200a"
       - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/qa/"
       - "ENDPOINT2=http://qa-nms-health-listener-env.eba-9xp3yujh.eu-west-2.elasticbeanstalk.com/alkimi/getToken"
       - "ENDPOINT3=http://qa-nms-health-listener-env.eba-9xp3yujh.eu-west-2.elasticbeanstalk.com/alkimi/produce-message"
