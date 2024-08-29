@@ -102,4 +102,4 @@ NODE_ID=$(curl  -s -X 'POST' \
   -H 'authorization: E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB' \
   -d '')
   NODE_ID=$(echo "$NODE_ID" | cut -d ":" -f 3 | sed 's/.$//')
-echo " Your Validator id Is:  $NODE_ID "
+echo " Your Validator ID Is:  $NODE_ID "
