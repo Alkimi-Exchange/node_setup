@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   nms:
-    image: alkimiorg/nms:v1.1.19
+    image: alkimiorg/nms:v1.2.1
     command: >
       bash -c
           "python manage.py makemigrations &&
@@ -16,7 +16,8 @@ services:
       - "BACKEND_ENDPOINT=https://alkiminodes-backend-staging-nldys.ondigitalocean.app"
       - "BACKEND_API_KEY=7154b898-61b9-4496-a894-69feb11e6ed4"
       - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/stg/"
-
+      - "KAFKA_TOKEN_URL=NA"
+      - "KAFKA_PRODUCER_URL=NA"
 
     network_mode: "host"
     volumes:
