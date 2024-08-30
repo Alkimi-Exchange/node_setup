@@ -94,7 +94,7 @@ echo " "
 echo " Please note down below details"
 echo " ------ ---- ---- ----- -------"
 echo " "
-echo " You Validator IP Address: $IP_ADDR"
+echo " Your Validator IP Address: $IP_ADDR"
 URL="http://$IP_ADDR:8000/nms_app/get_node_id/"
 NODE_ID=$(curl  -s -X 'POST' \
   $URL \
