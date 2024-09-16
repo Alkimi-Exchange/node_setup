@@ -25,4 +25,4 @@ services:
       - /home/ubuntu:/home/ubuntu
       - ./nms_logs:/app/nms_logs
       - /app/docker_pipes:/app/docker_pipes
-      - ./app/type_1_key_file:/home/ubuntu/L1_App
+      - ./app/type_1_key_file:/home/ubuntu/L1_App/type_1_key_file
