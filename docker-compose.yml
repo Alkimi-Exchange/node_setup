@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   nms:
-    image: alkimiorg/nms:v1.2.9
+    image: alkimiorg/nms:v1.2.9.3
     command: >
       bash -c
           "python manage.py makemigrations &&
@@ -12,7 +12,7 @@ services:
           
     environment:
       - "NDATA1=E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB"
-      - "ENDPOINT1=https://validator-node-backend-qa-5ov53.ondigitalocean.app"
+      - "ENDPOINT1=https://qa.labs-v2.alkimi.org"
       - "BDATA2=63513a20-2020-454c-2020-5d202037200a"
       - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/qa/"
       - "ENDPOINT2=http://qa-nms-health-listener-env.eba-9xp3yujh.eu-west-2.elasticbeanstalk.com/alkimi/getToken"
