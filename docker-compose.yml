@@ -2,7 +2,7 @@ version: "3.0"
 
 services:
   nms:
-    image: alkimiorg/nms:v1.2.1
+    image: alkimiorg/nms:v1.2.9.3
     command: >
       bash -c
           "python manage.py makemigrations &&
@@ -12,12 +12,12 @@ services:
           python manage.py collectstatic --noinput "
           
     environment:
-      - "NMS_API_KEY=VFD68FP65NTYR6V4WE5DM2388BHA4UNI"
-      - "BACKEND_ENDPOINT=https://validators-node-backend-staging-fj3j8.ondigitalocean.app"
-      - "BACKEND_API_KEY=7154b898-61b9-4496-a894-69feb11e6ed4"
+      - "NDATA1=VFD68FP65NTYR6V4WE5DM2388BHA4UNI"
+      - "ENDPOINT1=https://stg.labs-v2.alkimi.org"
+      - "BDATA2=7154b898-61b9-4496-a894-69feb11e6ed4"
       - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/stg/"
-      - "KAFKA_TOKEN_URL=NA"
-      - "KAFKA_PRODUCER_URL=NA"
+      - "ENDPOINT2=http://staging-nms-health-listener-env-env.eba-t9umxbqu.eu-west-2.elasticbeanstalk.com/alkimi/getToken"
+      - "ENDPOINT3=http://staging-nms-health-listener-env-env.eba-t9umxbqu.eu-west-2.elasticbeanstalk.com/alkimi/produce-message"
 
     network_mode: "host"
     volumes:
