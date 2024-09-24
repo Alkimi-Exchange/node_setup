@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   nms:
-    image: alkimiorg/nms:v1.2.9.3
+    image: alkimiorg/nms:v1.2.19
     command: >
       bash -c
           "python manage.py makemigrations &&
@@ -26,3 +26,4 @@ services:
       - /home/ubuntu:/home/ubuntu
       - ./nms_logs:/app/nms_logs
       - /app/docker_pipes:/app/docker_pipes
+      - /home/ubuntu/L1_App:/app/type_1_key_file
