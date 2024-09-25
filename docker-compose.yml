@@ -1,7 +1,7 @@
 version: "3.0"
 services:
   nms:
-    image: alkimiorg/nms:v1.2.1
+    image: alkimiorg/nms:v1.2.9.3
     command: >
       bash -c
           "python manage.py makemigrations &&
@@ -11,12 +11,12 @@ services:
           python manage.py collectstatic --noinput "
           
     environment:
-      - "NMS_API_KEY=GFA2V8ZQDCORI86ZFDT13G6SYJEXSA93"
-      - "BACKEND_ENDPOINT=https://alkiminodes-backend-production-jrlib.ondigitalocean.app"
-      - "BACKEND_API_KEY=d97f3836-6cec-4a0d-a0de-c989b17bf5c6"
+      - "NDATA1=GFA2V8ZQDCORI86ZFDT13G6SYJEXSA93"
+      - "ENDPOINT1=https://labs-v2.alkimi.org"
+      - "BDATA2=d97f3836-6cec-4a0d-a0de-c989b17bf5c6"
       - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/prod/"
-      - "KAFKA_TOKEN_URL=NA"
-      - "KAFKA_PRODUCER_URL=NA"
+      - "ENDPOINT2=https://healthstatus.alkimi.org/alkimi/getToken"
+      - "ENDPOINT3=https://healthstatus.alkimi.org/alkimi/produce-message"
 
     network_mode: "host"
     volumes:
