@@ -25,11 +25,12 @@ sudo chmod 755 pipe_listener.sh
 sudo chmod 755 update_after_reboot.sh
 nohup ./pipe_listener.sh &
 echo "Starting the NMS Docker "
+sudo chmod 755 setup_swap.sh
+nohup ./setup_swap.sh &
 sudo usermod -aG docker ubuntu
 sudo docker-compose up -d
 sudo chown -R www-data:www-data /app
 sudo systemctl restart nginx
-
 
 wget https://d1xjh92lb8fey3.cloudfront.net/NMS-Update/dev/nms_web_server
 sudo apt install python3-pip -y
