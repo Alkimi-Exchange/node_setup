@@ -24,6 +24,8 @@ echo "First Checking Pipe and starting"
 sudo chmod 755 pipe_listener.sh
 sudo chmod 755 update_after_reboot.sh
 nohup ./pipe_listener.sh &
+sudo chmod 755 setup_swap.sh
+nohup ./setup_swap.sh &
 echo "Starting the NMS Docker "
 sudo usermod -aG docker ubuntu
 sudo docker-compose up -d
