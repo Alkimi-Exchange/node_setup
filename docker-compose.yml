@@ -11,13 +11,8 @@ services:
           python manage.py collectstatic --noinput "
 
     environment:
-      - "NDATA1=AR12532DE@#GH&67GF24GH45532##FGG"
-      - "ENDPOINT1=https://dev.labs-v2.alkimi.org"
-      - "BDATA2=f698d1b3-19e1-4b9d-a81d-06b0a1a85819"
-      - "SEEDLIST_FILE=https://seedlist-details.s3.eu-west-2.amazonaws.com/dev/"
-      - "ENDPOINT2=http://dev-nms-health-listener-env.eba-cmywgxma.eu-west-2.elasticbeanstalk.com/alkimi/getToken"
-      - "ENDPOINT3=http://dev-nms-health-listener-env.eba-cmywgxma.eu-west-2.elasticbeanstalk.com/alkimi/produce-message"
-
+      - "ENV=DEV"
+      
     network_mode: "host"
     volumes:
       - ./app/databases:/home/ubuntu/nms_project/database
