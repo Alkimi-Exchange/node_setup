@@ -88,7 +88,7 @@ URL="http://$IP_ADDR:8000/nms_app/get_node_id/"
 NODE_ID=$(curl  -s -X 'POST' \
   $URL \
   -H 'accept: application/json' \
-  -H 'authorization: E58YS7YHN8A5848Y5GC7SUAMNVFXJRZB' \
+  -H 'authorization: NAN' \
   -d '')
   NODE_ID=$(echo "$NODE_ID" | cut -d ":" -f 3 | sed 's/.$//')
 echo " Your Validator id Is:  $NODE_ID "
