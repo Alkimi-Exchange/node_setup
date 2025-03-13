@@ -107,7 +107,7 @@ echo " Please note down below details"
 echo " ------ ---- ---- ----- -------"
 echo " "
 echo " You Validator IP Address: $IP_ADDR"
-URL="http://$IP_ADDR:8000/nms_app/get_node_id/"
+URL="http://127.0.0.1:8000/nms_app/get_node_id/"
 NODE_ID=$(curl  -s -X 'POST' \
   $URL \
   -H 'accept: application/json' \
@@ -117,4 +117,4 @@ NODE_ID=$(curl  -s -X 'POST' \
 echo " Your Validator id Is:  $NODE_ID "
 #!/bin/bash
 # update the ip to backend
-curl -X POST http://$IP_ADDR:9000/nms_app/ip_update/
+curl -X POST http://127.0.0.1:9000/nms_app/ip_update/
