@@ -3,7 +3,7 @@ echo " Please note down below details"
 echo " ------ ---- ---- ----- -------"
 echo " "
 echo " You node IP Address: $IP_ADDR"
-URL="http://127.0.01:8000/nms_app/get_node_id/"
+URL="http://127.0.0.1:8000/nms_app/get_node_id/"
 NODE_ID=$(curl  -s -X 'POST' \
   $URL \
   -H 'accept: application/json' \
