@@ -1,9 +1,9 @@
-IP_ADDR=$(wget -qO- ifconfig.me) 
+IP_ADDR=$(wget -qO- ifconfig.me/ip) 
 echo " Please note down below details"
 echo " ------ ---- ---- ----- -------"
 echo " "
 echo " You node IP Address: $IP_ADDR"
-URL="http://$IP_ADDR:8000/nms_app/get_node_id/"
+URL="http://127.0.01:8000/nms_app/get_node_id/"
 NODE_ID=$(curl  -s -X 'POST' \
   $URL \
   -H 'accept: application/json' \
