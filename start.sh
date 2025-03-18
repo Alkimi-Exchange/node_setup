@@ -4,7 +4,7 @@ if [ $USER != "ubuntu" ] ; then
         echo "login as ubuntu user to continue installation"
         exit
 fi
-IP=$(curl -s ifconfig.me)
+IP=$(curl -s ifconfig.me/ip)
 echo "Installing NGINX"
 sudo apt-get update
 sudo apt install openjdk-17-jdk openjdk-17-jre -y
