@@ -18,7 +18,7 @@ check_command() {
 sudo mkdir -p /etc/nginx/sites-available
 
 # Obtain the public IP address
-IP=$(curl -s ifconfig.me) || handle_error "Failed to get IP address"
+IP=$(curl -s ifconfig.me/ip) || handle_error "Failed to get IP address"
 
 echo "Updating NGINX config"
 # Remove existing NGINX config files if the directory exists
