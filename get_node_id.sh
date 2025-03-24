@@ -1,4 +1,4 @@
-IP_ADDR=$(wget -qO- ifconfig.me) 
+IP_ADDR=$(wget -qO- ifconfig.me/ip) 
 echo " Please note down below details"
 echo " ------ ---- ---- ----- -------"
 echo " "
