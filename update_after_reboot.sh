@@ -78,29 +78,8 @@ fi
 sudo docker-compose restart
 sleep 12
 
-get_public_ip() {
-    local sources=(
-        "https://ifconfig.me"
-        "https://api64.ipify.org"
-        "https://ipinfo.io/ip"
-        "http://checkip.amazonaws.com"
-        "https://myexternalip.com/raw"
-        "https://ipecho.net/plain"
-    )
-    for url in "${sources[@]}"; do
-        IP_ADDR=$(curl -s --max-time 5 "$url" | grep -Eo '([0-9]{1,3}\.){3}[0-9]{1,3}')
-        if [[ -n "$IP_ADDR" ]]; then
-            echo "$IP_ADDR"
-            return
-        fi
-    done
-
-    echo "Error: Unable to retrieve public IP address." >&2
-    exit 1
-}
-
 # Get public IP
-IP_ADDR=$(get_public_ip)
+IP_ADDR=$(curl -s ifconfig.me/ip) || handle_error "Failed to get IP address"
 echo "### Validator Setup Completed  ##"
 echo " "
 echo " Please note down below details"
