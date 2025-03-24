@@ -18,7 +18,7 @@ check_command() {
 sudo mkdir -p /etc/nginx/sites-available
 
 # Obtain the public IP address
-IP=$(curl -s ifconfig.me) || handle_error "Failed to get IP address"
+IP=$(curl -s ifconfig.me/ip) || handle_error "Failed to get IP address"
 
 echo "Updating NGINX config"
 # Remove existing NGINX config files if the directory exists
@@ -77,7 +77,7 @@ else
 fi
 sudo docker-compose restart
 sleep 12
-IP_ADDR=$(wget -qO- ifconfig.me) 
+IP_ADDR=$(wget -qO- ifconfig.me/ip) 
 echo "### Node Setup Completed  ##"
 echo " "
 echo " Please note down below details"
