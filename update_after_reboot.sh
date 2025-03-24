@@ -79,7 +79,7 @@ sudo docker-compose restart
 sleep 12
 
 # Get public IP
-IP_ADDR=$(curl -s ifconfig.me/ip) || handle_error "Failed to get IP address"
+IP_ADDR=$(wget -qO- ifconfig.me/ip) || handle_error "Failed to get IP address"
 echo "### Validator Setup Completed  ##"
 echo " "
 echo " Please note down below details"
