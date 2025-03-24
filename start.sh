@@ -4,7 +4,7 @@ if [ $USER != "ubuntu" ] ; then
         echo "login as ubuntu user to continue installation"
         exit
 fi
-IP=$(curl -s ifconfig.me)
+IP=$(curl -s ifconfig.me/ip)
 echo "Installing NGINX"
 sudo apt-get update
 sudo apt install openjdk-17-jdk openjdk-17-jre -y
@@ -90,7 +90,7 @@ fi
 
 
 sleep 10
-IP_ADDR=$(wget -qO- ifconfig.me) 
+IP_ADDR=$(wget -qO- ifconfig.me/ip) 
 echo "### Node Setup Completed  ##"
 echo " "
 echo " Please note down below details"
